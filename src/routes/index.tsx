@@ -199,7 +199,7 @@ function Index() {
 <span className="text-accent">SELECT</span> rol, enfoque{"\n"}<span className="text-accent">FROM</span> cesar_mercado{"\n"}<span className="text-accent">WHERE</span> nivel = <span className="text-primary">'junior'</span>;
             </pre>
             <div className="grid grid-cols-3 gap-3 text-center">
-              {[["6", "proyectos"], ["7", "herramientas"], ["3", "áreas"]].map(([n, l]) => (
+              {[[String(projects.length), "proyectos"], ["7", "herramientas"], ["3", "áreas"]].map(([n, l]) => (
                 <div key={l} className="rounded-lg border border-border p-3">
                   <div className="font-display text-2xl font-bold text-primary">{n}</div>
                   <div className="text-xs text-muted-foreground">{l}</div>
@@ -296,10 +296,12 @@ function Index() {
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <a href={p.repo} target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
-                    <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  {p.repo && (
+                    <a href={p.repo} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                      <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
                   {p.powerbi && (
                     <a href={p.powerbi} target="_blank" rel="noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
