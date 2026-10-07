@@ -273,7 +273,7 @@ function Index() {
 
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p, i) => (
-              <a key={p.name} href={p.repo} target="_blank" rel="noreferrer"
+              <div key={p.name}
                 className="group flex flex-col rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:border-primary/60">
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cats[0]}</span>
@@ -284,10 +284,19 @@ function Index() {
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
-                </span>
-              </a>
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <a href={p.repo} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                    <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                  {p.powerbi && (
+                    <a href={p.powerbi} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                      <BarChart3 className="h-4 w-4" /> Ver dashboard <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis.</p>
