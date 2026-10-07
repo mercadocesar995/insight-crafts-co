@@ -59,7 +59,7 @@ const projects: Project[] = [
     bars: [40, 65, 50, 80, 70, 90, 78, 96],
     code: "01",
     repo: "https://github.com/mercadocesar995/RappiPlus_Analisis",
-    powerbi: "https://app.powerbi.com/groups/me/reports/d5f57d7c-b083-4f2b-89d0-4f3ae6e80066?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiMjRiOTk0OGMtNDgxMy00YWM0LWE0YTUtOTEzYzEwYzBkMDZmIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
     featured: true,
   },
   {
@@ -70,7 +70,7 @@ const projects: Project[] = [
     bars: [30, 50, 60, 55, 75, 80],
     code: "02",
     repo: "https://github.com/mercadocesar995/Analisis_AndesCapitalRealEstate",
-    powerbi: "https://app.powerbi.com/links/SD7nqYX32E?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiNzkyZDM5ZTQtYmFmZC00Y2VkLWIyZDctYjBlYmVkMDRmNjBjIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
   },
   {
     name: "NovaRetail+",
@@ -80,7 +80,7 @@ const projects: Project[] = [
     bars: [45, 70, 55, 85, 60, 65],
     code: "03",
     repo: "https://github.com/mercadocesar995/analisis_NovaReatil-",
-    powerbi: "https://app.powerbi.com/links/iRqPe9S_Ua?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
   },
   {
     name: "ConnectaTel",
