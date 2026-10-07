@@ -59,7 +59,6 @@ const projects: Project[] = [
     bars: [40, 65, 50, 80, 70, 90, 78, 96],
     code: "01",
     repo: "https://github.com/mercadocesar995/RappiPlus_Analisis",
-    powerbi: "https://app.powerbi.com",
     featured: true,
   },
   {
@@ -70,7 +69,6 @@ const projects: Project[] = [
     bars: [30, 50, 60, 55, 75, 80],
     code: "02",
     repo: "https://github.com/mercadocesar995/Analisis_AndesCapitalRealEstate",
-    powerbi: "https://app.powerbi.com",
   },
   {
     name: "NovaRetail+",
