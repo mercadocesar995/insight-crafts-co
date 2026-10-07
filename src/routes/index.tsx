@@ -79,7 +79,7 @@ const projects: Project[] = [
     tools: ["Power BI", "DAX", "Excel"],
     bars: [35, 55, 48, 68, 62, 82],
     code: "03",
-    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9&pageName=3343bf1ef06660b8e8ef",
   },
   {
     name: "NovaRetail+",
