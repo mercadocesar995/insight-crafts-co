@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowUpRight,
+  BarChart3,
   Github,
   Linkedin,
   Mail,
@@ -45,6 +46,7 @@ type Project = {
   bars: number[];
   code: string;
   repo: string;
+  powerbi?: string;
   featured?: boolean;
 };
 
@@ -235,7 +237,7 @@ function Index() {
           </div>
 
           {featured && (
-            <a key={featured.name} href={featured.repo} target="_blank" rel="noreferrer"
+            <div key={featured.name}
               className="group relative mt-10 grid overflow-hidden rounded-2xl border border-primary/50 bg-background p-7 shadow-[0_0_70px_-25px_var(--primary)] transition hover:border-primary md:grid-cols-[1.25fr_1fr] md:items-center md:gap-10">
               <span className="absolute right-0 top-0 rounded-bl-xl bg-primary px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
                 Destacado
@@ -252,15 +254,26 @@ function Index() {
                 <div className="mt-5 flex flex-wrap gap-2">
                   {featured.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">Ver código en GitHub <ArrowUpRight className="h-4 w-4" /></span>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a href={featured.repo} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90">
+                    <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                  {featured.powerbi && (
+                    <a href={featured.powerbi} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition hover:border-primary hover:text-primary">
+                      <BarChart3 className="h-4 w-4" /> Ver dashboard <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
               </div>
               <div className="mt-6 rounded-xl bg-muted/60 p-5 md:mt-0"><Bars values={featured.bars} delay={120} /></div>
-            </a>
+            </div>
           )}
 
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p, i) => (
-              <a key={p.name} href={p.repo} target="_blank" rel="noreferrer"
+              <div key={p.name}
                 className="group flex flex-col rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:border-primary/60">
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cats[0]}</span>
@@ -271,13 +284,22 @@ function Index() {
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
-                </span>
-              </a>
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <a href={p.repo} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                    <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                  {p.powerbi && (
+                    <a href={p.powerbi} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                      <BarChart3 className="h-4 w-4" /> Ver dashboard <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis.</p>
+          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis. Donde aparece "Ver dashboard" puedes abrir el tablero de Power BI.</p>
         </div>
       </section>
 
