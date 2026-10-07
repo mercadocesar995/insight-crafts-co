@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowUpRight,
+  BarChart3,
   Github,
   Linkedin,
   Mail,
@@ -45,6 +46,7 @@ type Project = {
   bars: number[];
   code: string;
   repo: string;
+  powerbi?: string;
   featured?: boolean;
 };
 
