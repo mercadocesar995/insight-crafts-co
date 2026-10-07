@@ -1,12 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import {
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "César Mercado — Analista de Datos Junior" },
-      { name: "description", content: "Portafolio de César Mercado: Analista de Datos Junior que combina datos, negocio y comunicación. SQL, Python, Excel y Power BI." },
-      { property: "og:title", content: "César Mercado — Analista de Datos Junior" },
+      { title: "Cesar Mercado — Analista de Datos Junior" },
+      { name: "description", content: "Portafolio de Cesar Mercado: Analista de Datos Junior que combina datos, negocio y comunicación. SQL, Python, Excel y Power BI." },
+      { property: "og:title", content: "Cesar Mercado — Analista de Datos Junior" },
       { property: "og:description", content: "Datos + negocio + comunicación. Proyectos de BI, A/B testing y análisis de clientes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -17,14 +25,85 @@ export const Route = createFileRoute("/")({
 
 const NOTION = "https://grave-echinodon-95d.notion.site/Cesar-Mercado-Data-Analytics-BI-Portfolio-a8ad0ee5acfe823ea4b901fbad6d941e";
 
+const CONTACT = {
+  phoneLabel: "+57 315 472 8656",
+  tel: "tel:+573154728656",
+  whatsapp: "https://wa.me/573154728656",
+  email: "mercadocesar995@gmail.com",
+  linkedin: "https://www.linkedin.com/in/cesar-augusto-mercado",
+  github: "https://github.com/mercadocesar995",
+};
+
 type Cat = "Todos" | "BI" | "Clientes" | "Experimentación";
-const projects: { name: string; topic: string; cat: Exclude<Cat, "Todos">; tools: string[]; bars: number[]; code: string }[] = [
-  { name: "RappiPlus", topic: "Ventas, rentabilidad y A/B Testing", cat: "Experimentación", tools: ["SQL", "Python", "Estadística"], bars: [40, 65, 50, 80, 70, 90], code: "01" },
-  { name: "Andes Retail", topic: "Business Intelligence y análisis comercial", cat: "BI", tools: ["Power BI", "DAX", "Power Query"], bars: [55, 45, 75, 60, 85, 70], code: "02" },
-  { name: "Andes Capital Real Estate", topic: "Ventas, clientes y cohortes", cat: "BI", tools: ["SQL", "Power BI", "Excel"], bars: [30, 50, 60, 55, 75, 80], code: "03" },
-  { name: "ConnectaTel", topic: "Análisis de clientes", cat: "Clientes", tools: ["Python", "SQL"], bars: [70, 60, 45, 65, 50, 75], code: "04" },
-  { name: "NovaRetail+", topic: "Análisis estadístico de clientes", cat: "Clientes", tools: ["Python", "Estadística"], bars: [45, 70, 55, 85, 60, 65], code: "05" },
-  { name: "Experimentos A/B", topic: "Conversión y comportamiento de usuarios", cat: "Experimentación", tools: ["Python", "Estadística", "SQL"], bars: [50, 52, 48, 72, 74, 76], code: "06" },
+type Area = Exclude<Cat, "Todos">;
+
+type Project = {
+  name: string;
+  topic: string;
+  cats: Area[];
+  tools: string[];
+  bars: number[];
+  code: string;
+  repo: string;
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    name: "RappiPlus",
+    topic: "Ventas, rentabilidad y A/B Testing",
+    cats: ["BI", "Clientes", "Experimentación"],
+    tools: ["SQL", "Python", "Estadística", "Power BI"],
+    bars: [40, 65, 50, 80, 70, 90, 78, 96],
+    code: "01",
+    repo: "https://github.com/mercadocesar995/RappiPlus_Analisis",
+    featured: true,
+  },
+  {
+    name: "Andes Capital Real Estate",
+    topic: "Ventas, clientes y cohortes",
+    cats: ["BI", "Clientes"],
+    tools: ["SQL", "Power BI", "Excel"],
+    bars: [30, 50, 60, 55, 75, 80],
+    code: "02",
+    repo: "https://github.com/mercadocesar995/Analisis_AndesCapitalRealEstate",
+  },
+  {
+    name: "NovaRetail+",
+    topic: "Análisis estadístico de clientes",
+    cats: ["Clientes"],
+    tools: ["Python", "Estadística"],
+    bars: [45, 70, 55, 85, 60, 65],
+    code: "03",
+    repo: "https://github.com/mercadocesar995/analisis_NovaReatil-",
+  },
+  {
+    name: "ConnectaTel",
+    topic: "Análisis de clientes y churn",
+    cats: ["Clientes"],
+    tools: ["Python", "SQL"],
+    bars: [70, 60, 45, 65, 50, 75],
+    code: "04",
+    repo: "https://github.com/mercadocesar995/analisis_ConnectaTel",
+  },
+  {
+    name: "Movilidad 2024",
+    topic: "Análisis de datos de movilidad",
+    cats: ["BI"],
+    tools: ["SQL", "Python", "Power BI"],
+    bars: [55, 45, 75, 60, 85, 70],
+    code: "05",
+    repo: "https://github.com/mercadocesar995/analisis_movilidad_2024",
+  },
+  {
+    name: "Experimentos A/B",
+    topic: "Conversión y comportamiento de usuarios",
+    cats: ["Experimentación"],
+    tools: ["Python", "Estadística", "SQL"],
+    bars: [50, 52, 48, 72, 74, 76],
+    code: "06",
+    repo: "https://github.com/mercadocesar995/analisis_landing_page",
+  },
 ];
 
 const skills = [
@@ -46,19 +125,29 @@ function Bars({ values, delay = 0 }: { values: number[]; delay?: number }) {
 
 function Index() {
   const [cat, setCat] = useState<Cat>("Todos");
-  const list = projects.filter((p) => cat === "Todos" || p.cat === cat);
+  const list = projects.filter((p) => cat === "Todos" || p.cats.includes(cat));
+  const featured = list.find((p) => p.featured);
+  const rest = list.filter((p) => !p.featured);
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#inicio" className="font-display text-lg font-bold">césar<span className="text-primary">.</span>data</a>
+          <a href="#inicio" className="font-display text-lg font-bold">cesar<span className="text-primary">.</span>data</a>
           <div className="hidden gap-7 text-sm text-muted-foreground md:flex">
             {[["sobre-mi", "Sobre mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["contacto", "Contacto"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="transition-colors hover:text-foreground">{l}</a>
             ))}
           </div>
-          <a href="#contacto" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90">Contactar</a>
+          <div className="flex items-center gap-1">
+            <a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub"
+              className="rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"><Github className="h-4 w-4" /></a>
+            <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"
+              className="rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
+            <a href={`mailto:${CONTACT.email}`} aria-label="Correo"
+              className="rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"><Mail className="h-4 w-4" /></a>
+            <a href="#contacto" className="ml-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90">Contactar</a>
+          </div>
         </nav>
       </header>
 
@@ -71,7 +160,7 @@ function Index() {
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Abierto a oportunidades · Analista de Datos Junior
             </p>
             <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              César Mercado
+              Cesar Mercado
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               Comunicador Social y Periodista construyendo mi carrera en análisis de datos. Convierto datos en
@@ -84,7 +173,9 @@ function Index() {
             </div>
             <div className="mt-10 flex flex-wrap gap-3">
               <a href="#proyectos" className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition hover:-translate-y-0.5">Ver proyectos →</a>
-              <a href={NOTION} target="_blank" rel="noreferrer" className="rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary">Portafolio en Notion</a>
+              <a href={CONTACT.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary">
+                <Github className="h-4 w-4" /> Ver en GitHub
+              </a>
             </div>
           </div>
           <div className="self-center rounded-2xl border border-border bg-card p-6 shadow-2xl">
@@ -142,12 +233,37 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((p, i) => (
-              <a key={p.name} href={NOTION} target="_blank" rel="noreferrer"
+
+          {featured && (
+            <a key={featured.name} href={featured.repo} target="_blank" rel="noreferrer"
+              className="group relative mt-10 grid overflow-hidden rounded-2xl border border-primary/50 bg-background p-7 shadow-[0_0_70px_-25px_var(--primary)] transition hover:border-primary md:grid-cols-[1.25fr_1fr] md:items-center md:gap-10">
+              <span className="absolute right-0 top-0 rounded-bl-xl bg-primary px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
+                Destacado
+              </span>
+              <div>
+                <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
+                  <span>#{featured.code}</span>
+                  <span className="flex flex-wrap gap-1.5">
+                    {featured.cats.map((c) => <span key={c} className="rounded-full bg-muted px-2 py-0.5">{c}</span>)}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-3xl font-bold md:text-4xl">{featured.name}</h3>
+                <p className="mt-2 max-w-md text-muted-foreground">{featured.topic}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {featured.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
+                </div>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">Ver código en GitHub <ArrowUpRight className="h-4 w-4" /></span>
+              </div>
+              <div className="mt-6 rounded-xl bg-muted/60 p-5 md:mt-0"><Bars values={featured.bars} delay={120} /></div>
+            </a>
+          )}
+
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {rest.map((p, i) => (
+              <a key={p.name} href={p.repo} target="_blank" rel="noreferrer"
                 className="group flex flex-col rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:border-primary/60">
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
-                  <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cat}</span>
+                  <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cats[0]}</span>
                 </div>
                 <div className="my-6 rounded-lg bg-muted/60 p-4"><Bars values={p.bars} delay={i * 60} /></div>
                 <h3 className="font-display text-xl font-semibold">{p.name}</h3>
@@ -155,11 +271,13 @@ function Index() {
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
-                <span className="mt-6 text-sm font-medium text-primary">Ver caso →</span>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                </span>
               </a>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; los detalles y resultados de cada caso están en el portafolio completo.</p>
+          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis.</p>
         </div>
       </section>
 
@@ -182,17 +300,54 @@ function Index() {
 
       {/* Contact */}
       <section id="contacto" className="mx-auto max-w-6xl px-5 pb-24">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 text-center md:p-16">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-14">
           <div className="grid-bg absolute inset-0 opacity-60" />
-          <div className="relative">
-            <h2 className="font-display text-3xl font-bold md:text-5xl">¿Hablamos de datos?</h2>
-            <p className="mx-auto mt-4 max-w-lg text-muted-foreground">Busco mi próxima oportunidad como Analista de Datos Junior.</p>
-            <a href={NOTION} target="_blank" rel="noreferrer" className="mt-8 inline-block rounded-full bg-primary px-7 py-3 font-medium text-primary-foreground transition hover:-translate-y-0.5">Ver portafolio completo</a>
+          <div className="relative text-center">
+            <p className="font-mono text-sm text-primary">04 / Contacto</p>
+            <h2 className="mt-2 font-display text-3xl font-bold md:text-5xl">¿Hablamos de datos?</h2>
+            <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
+              Busco mi próxima oportunidad como Analista de Datos Junior. Escríbeme por el canal que prefieras.
+            </p>
+
+            <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+              {[
+                { label: "WhatsApp", value: CONTACT.phoneLabel, href: CONTACT.whatsapp, Icon: MessageCircle },
+                { label: "Correo", value: CONTACT.email, href: `mailto:${CONTACT.email}`, Icon: Mail },
+                { label: "LinkedIn", value: "/in/cesar-augusto-mercado", href: CONTACT.linkedin, Icon: Linkedin },
+                { label: "GitHub", value: "/mercadocesar995", href: CONTACT.github, Icon: Github },
+              ].map(({ label, value, href, Icon }) => (
+                <a key={label} href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-background p-4 text-left transition hover:-translate-y-1 hover:border-primary/60">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-display text-sm font-semibold">{label}</span>
+                    <span className="block truncate text-sm text-muted-foreground">{value}</span>
+                  </span>
+                  <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+                </a>
+              ))}
+            </div>
+
+            <a href={CONTACT.tel} className="mt-8 inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition hover:border-primary">
+              <Phone className="h-4 w-4 text-primary" /> {CONTACT.phoneLabel}
+            </a>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">© 2026 César Mercado · Analista de Datos Junior</footer>
+      <footer className="border-t border-border py-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 text-sm text-muted-foreground">
+          <span>© 2026 Cesar Mercado · Analista de Datos Junior</span>
+          <div className="flex items-center gap-1">
+            <a href={NOTION} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1 transition hover:text-foreground">Portafolio en Notion</a>
+            <a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="rounded-full p-2 transition hover:text-foreground"><Github className="h-4 w-4" /></a>
+            <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="rounded-full p-2 transition hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
+            <a href={`mailto:${CONTACT.email}`} aria-label="Correo" className="rounded-full p-2 transition hover:text-foreground"><Mail className="h-4 w-4" /></a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
