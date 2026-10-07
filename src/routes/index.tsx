@@ -45,7 +45,7 @@ type Project = {
   tools: string[];
   bars: number[];
   code: string;
-  repo: string;
+  repo?: string;
   powerbi?: string;
   featured?: boolean;
 };
@@ -59,7 +59,7 @@ const projects: Project[] = [
     bars: [40, 65, 50, 80, 70, 90, 78, 96],
     code: "01",
     repo: "https://github.com/mercadocesar995/RappiPlus_Analisis",
-    powerbi: "https://app.powerbi.com/groups/me/reports/d5f57d7c-b083-4f2b-89d0-4f3ae6e80066?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiMjRiOTk0OGMtNDgxMy00YWM0LWE0YTUtOTEzYzEwYzBkMDZmIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
     featured: true,
   },
   {
@@ -70,7 +70,16 @@ const projects: Project[] = [
     bars: [30, 50, 60, 55, 75, 80],
     code: "02",
     repo: "https://github.com/mercadocesar995/Analisis_AndesCapitalRealEstate",
-    powerbi: "https://app.powerbi.com/links/SD7nqYX32E?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiNzkyZDM5ZTQtYmFmZC00Y2VkLWIyZDctYjBlYmVkMDRmNjBjIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
+  },
+  {
+    name: "Andes Retail",
+    topic: "Detalle operativo y rentabilidad (2024–2025)",
+    cats: ["BI"],
+    tools: ["Power BI", "DAX", "Excel"],
+    bars: [35, 55, 48, 68, 62, 82],
+    code: "03",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
   },
   {
     name: "NovaRetail+",
@@ -78,9 +87,8 @@ const projects: Project[] = [
     cats: ["Clientes"],
     tools: ["Python", "Estadística"],
     bars: [45, 70, 55, 85, 60, 65],
-    code: "03",
+    code: "04",
     repo: "https://github.com/mercadocesar995/analisis_NovaReatil-",
-    powerbi: "https://app.powerbi.com/links/iRqPe9S_Ua?ctid=d51388ef-6ab0-4363-9f94-d56644a45970&pbi_source=linkShare",
   },
   {
     name: "ConnectaTel",
@@ -88,7 +96,7 @@ const projects: Project[] = [
     cats: ["Clientes"],
     tools: ["Python", "SQL"],
     bars: [70, 60, 45, 65, 50, 75],
-    code: "04",
+    code: "05",
     repo: "https://github.com/mercadocesar995/analisis_ConnectaTel",
   },
   {
@@ -97,7 +105,7 @@ const projects: Project[] = [
     cats: ["BI"],
     tools: ["SQL", "Python", "Power BI"],
     bars: [55, 45, 75, 60, 85, 70],
-    code: "05",
+    code: "06",
     repo: "https://github.com/mercadocesar995/analisis_movilidad_2024",
   },
   {
@@ -106,7 +114,7 @@ const projects: Project[] = [
     cats: ["Experimentación"],
     tools: ["Python", "Estadística", "SQL"],
     bars: [50, 52, 48, 72, 74, 76],
-    code: "06",
+    code: "07",
     repo: "https://github.com/mercadocesar995/analisis_landing_page",
   },
 ];
@@ -191,7 +199,7 @@ function Index() {
 <span className="text-accent">SELECT</span> rol, enfoque{"\n"}<span className="text-accent">FROM</span> cesar_mercado{"\n"}<span className="text-accent">WHERE</span> nivel = <span className="text-primary">'junior'</span>;
             </pre>
             <div className="grid grid-cols-3 gap-3 text-center">
-              {[["6", "proyectos"], ["7", "herramientas"], ["3", "áreas"]].map(([n, l]) => (
+              {[[String(projects.length), "proyectos"], ["7", "herramientas"], ["3", "áreas"]].map(([n, l]) => (
                 <div key={l} className="rounded-lg border border-border p-3">
                   <div className="font-display text-2xl font-bold text-primary">{n}</div>
                   <div className="text-xs text-muted-foreground">{l}</div>
@@ -288,10 +296,12 @@ function Index() {
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <a href={p.repo} target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
-                    <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  {p.repo && (
+                    <a href={p.repo} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
+                      <Github className="h-4 w-4" /> Ver código <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
                   {p.powerbi && (
                     <a href={p.powerbi} target="_blank" rel="noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:opacity-80">
