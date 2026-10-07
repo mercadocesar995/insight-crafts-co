@@ -45,7 +45,7 @@ type Project = {
   tools: string[];
   bars: number[];
   code: string;
-  repo: string;
+  repo?: string;
   powerbi?: string;
   featured?: boolean;
 };
@@ -73,14 +73,22 @@ const projects: Project[] = [
     powerbi: "https://app.powerbi.com/view?r=eyJrIjoiNzkyZDM5ZTQtYmFmZC00Y2VkLWIyZDctYjBlYmVkMDRmNjBjIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
   },
   {
+    name: "Andes Retail",
+    topic: "Detalle operativo y rentabilidad (2024–2025)",
+    cats: ["BI"],
+    tools: ["Power BI", "DAX", "Excel"],
+    bars: [35, 55, 48, 68, 62, 82],
+    code: "03",
+    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
+  },
+  {
     name: "NovaRetail+",
     topic: "Análisis estadístico de clientes",
     cats: ["Clientes"],
     tools: ["Python", "Estadística"],
     bars: [45, 70, 55, 85, 60, 65],
-    code: "03",
+    code: "04",
     repo: "https://github.com/mercadocesar995/analisis_NovaReatil-",
-    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
   },
   {
     name: "ConnectaTel",
@@ -88,7 +96,7 @@ const projects: Project[] = [
     cats: ["Clientes"],
     tools: ["Python", "SQL"],
     bars: [70, 60, 45, 65, 50, 75],
-    code: "04",
+    code: "05",
     repo: "https://github.com/mercadocesar995/analisis_ConnectaTel",
   },
   {
@@ -97,7 +105,7 @@ const projects: Project[] = [
     cats: ["BI"],
     tools: ["SQL", "Python", "Power BI"],
     bars: [55, 45, 75, 60, 85, 70],
-    code: "05",
+    code: "06",
     repo: "https://github.com/mercadocesar995/analisis_movilidad_2024",
   },
   {
@@ -106,7 +114,7 @@ const projects: Project[] = [
     cats: ["Experimentación"],
     tools: ["Python", "Estadística", "SQL"],
     bars: [50, 52, 48, 72, 74, 76],
-    code: "06",
+    code: "07",
     repo: "https://github.com/mercadocesar995/analisis_landing_page",
   },
 ];
