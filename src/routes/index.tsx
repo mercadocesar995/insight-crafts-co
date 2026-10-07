@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
 const NOTION = "https://grave-echinodon-95d.notion.site/Cesar-Mercado-Data-Analytics-BI-Portfolio-a8ad0ee5acfe823ea4b901fbad6d941e";
 
 const CONTACT = {
-  phoneLabel: "+57 315 472 8656",
+  phoneLabel: "",
   tel: "tel:+573154728656",
   whatsapp: "https://wa.me/573154728656",
   email: "mercadocesar995@gmail.com",
