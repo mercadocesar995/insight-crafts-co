@@ -299,7 +299,7 @@ function Index() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis.</p>
+          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis. Donde aparece "Ver dashboard" puedes abrir el tablero de Power BI.</p>
         </div>
       </section>
 
