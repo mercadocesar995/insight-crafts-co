@@ -14,9 +14,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Cesar Mercado — Analista de Datos Junior" },
-      { name: "description", content: "Portafolio de Cesar Mercado: Analista de Datos Junior que combina datos, negocio y comunicación. SQL, Python, Excel y Power BI." },
+      { name: "description", content: "Portafolio de Cesar Mercado, Analista de Datos Junior con formación en Comunicación Social. Transformo datos en hallazgos claros que facilitan la toma de decisiones. SQL, Python, Excel y Power BI." },
       { property: "og:title", content: "Cesar Mercado — Analista de Datos Junior" },
-      { property: "og:description", content: "Datos + negocio + comunicación. Proyectos de BI, A/B testing y análisis de clientes." },
+      { property: "og:description", content: "Analista de Datos Junior con formación en Comunicación Social y experiencia en contextos de negocio. Datos + negocio + comunicación." },
+
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -176,9 +177,10 @@ function Index() {
               Cesar Mercado
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Comunicador Social y Periodista construyendo mi carrera en análisis de datos. Convierto datos en
-              respuestas claras para el negocio.
+              Analista de Datos Junior con formación en Comunicación Social y experiencia en contextos de
+              negocio. Transformo datos en hallazgos claros que facilitan la comprensión y la toma de decisiones.
             </p>
+
             <div className="mt-8 flex flex-wrap items-center gap-3 font-display text-xl font-semibold">
               <span className="rounded-lg bg-primary/15 px-3 py-1 text-primary">Datos</span>+
               <span className="rounded-lg bg-accent/15 px-3 py-1 text-accent">Negocio</span>+
