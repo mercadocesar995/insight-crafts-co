@@ -167,9 +167,9 @@ export function CommunicationData() {
         {visualPieces.length > 0 && (
           <div className="mt-14 border-t border-border pt-10">
             <p className="font-mono text-xs text-chart-3">EVIDENCIA DE COMUNICACIÓN</p>
-            <h3 className="mt-2 font-display text-2xl font-semibold">También comunico con imagen y sonido</h3>
+            <h3 className="mt-2 font-display text-2xl font-semibold">También comunico con imagen y cámara</h3>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Piezas propias de fotografía, audio y video. Muestran la parte visual y narrativa de mi formación; no son
+              Piezas propias de fotografía y video. Muestran la parte visual y narrativa de mi formación; no son
               proyectos de análisis de datos.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -186,13 +186,15 @@ export function CommunicationData() {
                     {piece.image && (
                       <img src={piece.image} alt="" loading="lazy" className="h-44 w-full border-b border-border object-cover" />
                     )}
-                    <span className="block p-5">
+                    <span className="flex flex-1 flex-col p-5">
                       <span className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
                         <Icon className="h-4 w-4 text-chart-3" /> {piece.kind}
                       </span>
                       <span className="mt-3 block font-display text-base font-semibold">{piece.title}</span>
                       <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{piece.note}</span>
-                      <ArrowUpRight className="mt-4 h-4 w-4 text-muted-foreground transition group-hover:text-chart-3" />
+                      <span className="mt-auto flex pt-4">
+                        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-chart-3" />
+                      </span>
                     </span>
                   </a>
                 );

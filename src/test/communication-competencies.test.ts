@@ -43,10 +43,11 @@ describe("Comunicación + Datos facts", () => {
     for (const item of competencies) expect(PORTFOLIO_PROJECTS).toContain(item.project);
   });
 
-  it("only publishes visual pieces that are Foto, Audio or Video with an https link", () => {
+  it("only publishes visual pieces that are Foto, Audio or Video with an openable link", () => {
+    expect(visualPieces).toHaveLength(5);
     for (const piece of visualPieces) {
       expect(["Foto", "Audio", "Video"]).toContain(piece.kind);
-      expect(piece.href.startsWith("https://")).toBe(true);
+      expect(piece.href.startsWith("https://") || piece.href.startsWith("/")).toBe(true);
       if (piece.image) expect(piece.image.startsWith("https://") || piece.image.startsWith("/")).toBe(true);
     }
   });
