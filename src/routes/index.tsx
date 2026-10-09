@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AboutJourney } from "@/components/about-journey";
+import { CommunicationData } from "@/components/communication-data";
 import {
   ArrowUpRight,
   BarChart3,
@@ -8,7 +9,6 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
-  MessageSquare,
   Phone,
 } from "lucide-react";
 
@@ -151,7 +151,7 @@ function Index() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="#inicio" className="font-display text-lg font-bold">cesar<span className="text-primary">.</span>data</a>
           <div className="hidden gap-7 text-sm text-muted-foreground md:flex">
-            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["contacto", "Contacto"]].map(([id, l]) => (
+            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["comunicacion", "Comunicación"], ["contacto", "Contacto"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="transition-colors hover:text-foreground">{l}</a>
             ))}
           </div>
@@ -320,26 +320,17 @@ function Index() {
             </div>
           ))}
         </div>
-        <div className="mt-10 border-t border-border pt-8">
-          <p className="flex items-center gap-2 font-mono text-xs text-chart-3"><MessageSquare className="h-4 w-4" /> MI DIFERENCIAL · COMUNICACIÓN SOCIAL</p>
-          <h3 className="mt-3 font-display text-2xl font-semibold">Los hallazgos también necesitan una buena historia.</h3>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">Mi formación en comunicación organizacional y producción audiovisual complementa el análisis: organizar información, adaptar mensajes y explicar resultados de forma comprensible para el negocio.</p>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {[
-              { title: "Storytelling y síntesis", text: "Guion y organización de historias: una base para presentar hallazgos con contexto y claridad." },
-              { title: "Comunicación para distintas audiencias", text: "Comunicación interna y externa y adaptación de mensajes: un puente entre la información y quienes toman decisiones." },
-              { title: "Creatividad audiovisual", text: "Fotografía, video, edición y producción gráfica y multimedia: una mirada que complementa la presentación visual de información." },
-            ].map((item) => <div key={item.title}><h4 className="font-display text-base font-semibold text-chart-3">{item.title}</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p></div>)}
-          </div>
-        </div>
       </section>
+
+      {/* Comunicación + Datos */}
+      <CommunicationData />
 
       {/* Contact */}
       <section id="contacto" className="mx-auto max-w-6xl px-5 pb-24">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-14">
           <div className="grid-bg absolute inset-0 opacity-60" />
           <div className="relative text-center">
-            <p className="font-mono text-sm text-primary">04 / Contacto</p>
+            <p className="font-mono text-sm text-primary">05 / Contacto</p>
             <h2 className="mt-2 font-display text-3xl font-bold md:text-5xl">¿Hablamos de datos?</h2>
             <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
               Busco mi próxima oportunidad como Analista de Datos Junior. Escríbeme por el canal que prefieras.

@@ -5,3 +5,4 @@
 - [ ] Enlace de Power BI para NovaRetail+ (aún no tiene tablero propio publicado)
 - [ ] Confirmar descripción real y herramientas de "Movilidad 2024"
 - [ ] Decidir si "Movilidad 2024" sigue en el portafolio (Andes Retail volvió)
+- [ ] Añadir fotos, audios y videos a la sección "Comunicación + Datos" (el bloque ya está listo, faltan los enlaces o archivos)
