@@ -56,7 +56,7 @@ function Triad() {
       <text x="180" y="208" textAnchor="middle" className="fill-chart-3 font-mono text-[11px]">
         Comunicación
       </text>
-      <text x="180" y="118" textAnchor="middle" className="fill-muted-foreground font-mono text-[9px]">
+      <text x="180" y="118" textAnchor="middle" className="fill-foreground/80 font-mono text-[11px]">
         análisis útil
       </text>
     </svg>
