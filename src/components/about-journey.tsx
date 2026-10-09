@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Check, ChevronLeft, ChevronRight, GraduationCap, MapPin, MessageSquare, Sparkles, Utensils } from "lucide-react";
+import { ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Check, ChevronDown, ChevronLeft, ChevronRight, GraduationCap, MapPin, MessageSquare, Sparkles, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { experiencesForSkill, journey, journeySkills, type JourneySkill, type JourneyStage } from "@/lib/professional-journey";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ const themeClasses = {
 const themeIcons = { operations: Utensils, business: BriefcaseBusiness, communication: MessageSquare, data: BarChart3 };
 
 export function AboutJourney() {
+  const [expanded, setExpanded] = useState(false);
   const [selectedId, setSelectedId] = useState("cuarta");
   const [skill, setSkill] = useState<JourneySkill>("Pensamiento analítico");
   const selectedIndex = journey.findIndex((stage) => stage.id === selectedId);
@@ -30,15 +31,20 @@ export function AboutJourney() {
 
   return (
     <section id="sobre-mi" className="scroll-mt-24 border-t border-border">
-      <div className="mx-auto max-w-6xl px-5 py-20">
+      <div className="mx-auto max-w-6xl px-5 py-10">
         <div className="grid gap-6 md:grid-cols-[1fr_1.1fr] md:items-end">
           <div>
             <p className="font-mono text-sm text-primary">01 / Acerca de mí</p>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-4xl">Una trayectoria.<br />Muchas formas de aportar.</h2>
+            <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Datos, negocio y una mirada comunicadora.</h2>
           </div>
-          <p className="max-w-xl leading-relaxed text-muted-foreground">Soy Analista de Datos Junior, Comunicador Social y Periodista. Mi camino por las operaciones, el servicio y la comunicación me enseñó a comprender procesos, trabajar con personas y organizar información. Hoy conecto esos aprendizajes con el análisis de datos.</p>
+          <div><p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Mi formación en Comunicación Social y mi experiencia operativa aportan contexto y claridad a mi perfil de Analista de Datos Junior.</p>
+            <Button variant="outline" aria-expanded={expanded} aria-controls="about-expanded" onClick={() => setExpanded((value) => !value)} className="mt-4 gap-2">
+              {expanded ? "Cerrar acerca de mí" : "Acerca de mí"}<ChevronDown className={cn("h-4 w-4 transition-transform", expanded && "rotate-180")} />
+            </Button>
+          </div>
         </div>
 
+        {expanded && <div id="about-expanded" className="journey-reveal">
         <div className="mt-10 flex flex-wrap items-center gap-3 border-y border-border py-5 font-display text-sm font-medium md:text-base">
           <span className="inline-flex items-center gap-2 text-primary"><Utensils className="h-4 w-4" /> Operaciones</span>
           <ArrowRight className="h-4 w-4 text-muted-foreground" />
@@ -135,6 +141,7 @@ export function AboutJourney() {
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">Sigo desarrollándome como Analista de Datos Junior, con interés en aprender y aportar a equipos que conecten información con decisiones.</p>
           <Button asChild variant="link" className="mt-4 h-auto p-0"><a href="#proyectos">Mi siguiente capítulo: los proyectos<ArrowRight /></a></Button>
         </div>
+        </div>}
       </div>
     </section>
   );

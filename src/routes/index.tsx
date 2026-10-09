@@ -8,6 +8,7 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
+  MessageSquare,
   Phone,
 } from "lucide-react";
 
@@ -318,6 +319,18 @@ function Index() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-10 border-t border-border pt-8">
+          <p className="flex items-center gap-2 font-mono text-xs text-chart-3"><MessageSquare className="h-4 w-4" /> MI DIFERENCIAL · COMUNICACIÓN SOCIAL</p>
+          <h3 className="mt-3 font-display text-2xl font-semibold">Los hallazgos también necesitan una buena historia.</h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">Mi formación en comunicación organizacional y producción audiovisual complementa el análisis: organizar información, adaptar mensajes y explicar resultados de forma comprensible para el negocio.</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {[
+              { title: "Storytelling y síntesis", text: "Guion y organización de historias: una base para presentar hallazgos con contexto y claridad." },
+              { title: "Comunicación para distintas audiencias", text: "Comunicación interna y externa y adaptación de mensajes: un puente entre la información y quienes toman decisiones." },
+              { title: "Creatividad audiovisual", text: "Fotografía, video, edición y producción gráfica y multimedia: una mirada que complementa la presentación visual de información." },
+            ].map((item) => <div key={item.title}><h4 className="font-display text-base font-semibold text-chart-3">{item.title}</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p></div>)}
+          </div>
         </div>
       </section>
 
