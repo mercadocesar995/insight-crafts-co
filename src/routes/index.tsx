@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { AboutJourney } from "@/components/about-journey";
 import {
   ArrowUpRight,
   BarChart3,
@@ -149,7 +150,7 @@ function Index() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="#inicio" className="font-display text-lg font-bold">cesar<span className="text-primary">.</span>data</a>
           <div className="hidden gap-7 text-sm text-muted-foreground md:flex">
-            {[["sobre-mi", "Sobre mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["contacto", "Contacto"]].map(([id, l]) => (
+            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["contacto", "Contacto"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="transition-colors hover:text-foreground">{l}</a>
             ))}
           </div>
@@ -214,22 +215,7 @@ function Index() {
       </section>
 
       {/* About */}
-      <section id="sobre-mi" className="mx-auto max-w-6xl px-5 py-20">
-        <p className="font-mono text-sm text-primary">01 / Sobre mí</p>
-        <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Un perfil que conecta números con personas</h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {[
-            ["Datos", "Formación práctica en SQL, Python, Excel, Power BI, DAX, Power Query y estadística.", "text-primary"],
-            ["Negocio", "Experiencia en desarrollo organizacional, marketing, operaciones, ventas, inventarios y gestión de información.", "text-accent"],
-            ["Comunicación", "Formación como Comunicador Social y Periodista: explico hallazgos de forma clara para quien toma decisiones.", "text-chart-3"],
-          ].map(([t, d, c]) => (
-            <div key={t} className="rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/50">
-              <h3 className={`font-display text-xl font-semibold ${c}`}>{t}</h3>
-              <p className="mt-3 text-muted-foreground">{d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <AboutJourney />
 
       {/* Projects */}
       <section id="proyectos" className="border-y border-border bg-card/40">

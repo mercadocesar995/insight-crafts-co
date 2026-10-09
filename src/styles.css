@@ -119,3 +119,14 @@ html { scroll-behavior: smooth; }
 }
 @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @utility bar-grow { transform-origin: bottom; animation: grow 1.2s cubic-bezier(.2,.8,.2,1) both; }
+
+#journey-detail { scroll-margin-top: 6rem; }
+@keyframes journey-reveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.journey-reveal { animation: journey-reveal 180ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
