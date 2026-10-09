@@ -22,6 +22,8 @@ export type VisualPiece = {
   kind: "Foto" | "Audio" | "Video";
   note: string;
   href: string;
+  /** Optional preview: a hosted image URL or an asset pointer URL used as the card thumbnail. */
+  image?: string;
 };
 
 export const dimensions: Dimension[] = [

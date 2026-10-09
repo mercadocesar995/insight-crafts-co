@@ -47,6 +47,7 @@ describe("Comunicación + Datos facts", () => {
     for (const piece of visualPieces) {
       expect(["Foto", "Audio", "Video"]).toContain(piece.kind);
       expect(piece.href.startsWith("https://")).toBe(true);
+      if (piece.image) expect(piece.image.startsWith("https://") || piece.image.startsWith("/")).toBe(true);
     }
   });
 });

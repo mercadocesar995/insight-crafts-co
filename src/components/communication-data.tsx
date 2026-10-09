@@ -181,14 +181,19 @@ export function CommunicationData() {
                     href={piece.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-chart-3/60"
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-chart-3/60"
                   >
-                    <span className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                      <Icon className="h-4 w-4 text-chart-3" /> {piece.kind}
+                    {piece.image && (
+                      <img src={piece.image} alt="" loading="lazy" className="h-44 w-full border-b border-border object-cover" />
+                    )}
+                    <span className="block p-5">
+                      <span className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                        <Icon className="h-4 w-4 text-chart-3" /> {piece.kind}
+                      </span>
+                      <span className="mt-3 block font-display text-base font-semibold">{piece.title}</span>
+                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{piece.note}</span>
+                      <ArrowUpRight className="mt-4 h-4 w-4 text-muted-foreground transition group-hover:text-chart-3" />
                     </span>
-                    <span className="mt-3 block font-display text-base font-semibold">{piece.title}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{piece.note}</span>
-                    <ArrowUpRight className="mt-4 h-4 w-4 text-muted-foreground transition group-hover:text-chart-3" />
                   </a>
                 );
               })}
