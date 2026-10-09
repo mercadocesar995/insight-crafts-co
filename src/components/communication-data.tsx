@@ -64,8 +64,10 @@ function Triad() {
 }
 
 export function CommunicationData() {
-  const [activeId, setActiveId] = useState(competencies[0].id);
-  const active = competencies.find((item) => item.id === activeId) ?? competencies[0];
+  const first = competencies[0];
+  const [activeId, setActiveId] = useState(first?.id ?? "");
+  const active = competencies.find((item) => item.id === activeId) ?? first;
+  if (!active) return null;
 
   return (
     <section id="comunicacion" className="scroll-mt-24 border-t border-border">
