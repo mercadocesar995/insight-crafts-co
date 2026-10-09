@@ -23,6 +23,9 @@ export function AboutJourney() {
 
   function selectStage(stage: JourneyStage) {
     setSelectedId(stage.id);
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      document.getElementById("journey-detail")?.scrollIntoView({ block: "start" });
+    }
   }
 
   return (
