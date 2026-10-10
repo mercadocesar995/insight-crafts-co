@@ -11,3 +11,5 @@
 
 - Keep professional journey facts, communication competencies and visual evidence in browser-safe data modules under src/lib, separate from the interactive components, so attribution and filtering can be tested independently of presentation.
 - Render the interactive About section inside the existing home page and preserve its anchor, so shared links and the surrounding portfolio stay intact.
+- Keep project summaries, thematic cover mappings, work tools and education in browser-safe src/lib modules; this separates factual content from its presentation and keeps category filters testable.
+- Treat institutional logos as contextual education references, not the portfolio brand or favicon; this avoids implying university ownership or endorsement.

@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AboutJourney } from "@/components/about-journey";
 import { CommunicationData } from "@/components/communication-data";
+import { WorkTools } from "@/components/work-tools";
+import { projects, heroImage, type Cat } from "@/lib/portfolio-projects";
+import { toolCount } from "@/lib/work-tools";
+import { Button } from "@/components/ui/button";
 import {
   ArrowUpRight,
   BarChart3,
@@ -38,89 +42,6 @@ const CONTACT = {
   github: "https://github.com/mercadocesar995",
 };
 
-type Cat = "Todos" | "BI" | "Clientes" | "Experimentación";
-type Area = Exclude<Cat, "Todos">;
-
-type Project = {
-  name: string;
-  topic: string;
-  cats: Area[];
-  tools: string[];
-  bars: number[];
-  code: string;
-  repo?: string;
-  powerbi?: string;
-  featured?: boolean;
-};
-
-const projects: Project[] = [
-  {
-    name: "RappiPlus",
-    topic: "Ventas, rentabilidad y A/B Testing",
-    cats: ["BI", "Clientes", "Experimentación"],
-    tools: ["SQL", "Python", "Estadística", "Power BI"],
-    bars: [40, 65, 50, 80, 70, 90, 78, 96],
-    code: "01",
-    repo: "https://github.com/mercadocesar995/RappiPlus_Analisis",
-    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiMjRiOTk0OGMtNDgxMy00YWM0LWE0YTUtOTEzYzEwYzBkMDZmIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
-    featured: true,
-  },
-  {
-    name: "Andes Capital Real Estate",
-    topic: "Ventas, clientes y cohortes",
-    cats: ["BI", "Clientes"],
-    tools: ["SQL", "Power BI", "Excel"],
-    bars: [30, 50, 60, 55, 75, 80],
-    code: "02",
-    repo: "https://github.com/mercadocesar995/Analisis_AndesCapitalRealEstate",
-    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiNzkyZDM5ZTQtYmFmZC00Y2VkLWIyZDctYjBlYmVkMDRmNjBjIiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9",
-  },
-  {
-    name: "Andes Retail",
-    topic: "Detalle operativo y rentabilidad (2024–2025)",
-    cats: ["BI"],
-    tools: ["Power BI", "DAX", "Excel"],
-    bars: [35, 55, 48, 68, 62, 82],
-    code: "03",
-    powerbi: "https://app.powerbi.com/view?r=eyJrIjoiODhjYzgwNGYtMjUyZi00NzkwLTg3NmUtZjAyODMwNWIzNzM5IiwidCI6ImQ1MTM4OGVmLTZhYjAtNDM2My05Zjk0LWQ1NjY0NGE0NTk3MCIsImMiOjR9&pageName=3343bf1ef06660b8e8ef",
-  },
-  {
-    name: "NovaRetail+",
-    topic: "Análisis estadístico de clientes",
-    cats: ["Clientes"],
-    tools: ["Python", "Estadística"],
-    bars: [45, 70, 55, 85, 60, 65],
-    code: "04",
-    repo: "https://github.com/mercadocesar995/analisis_NovaReatil-",
-  },
-  {
-    name: "ConnectaTel",
-    topic: "Análisis de clientes y churn",
-    cats: ["Clientes"],
-    tools: ["Python", "SQL"],
-    bars: [70, 60, 45, 65, 50, 75],
-    code: "05",
-    repo: "https://github.com/mercadocesar995/analisis_ConnectaTel",
-  },
-  {
-    name: "Movilidad 2024",
-    topic: "Análisis de datos de movilidad",
-    cats: ["BI"],
-    tools: ["SQL", "Python", "Power BI"],
-    bars: [55, 45, 75, 60, 85, 70],
-    code: "06",
-    repo: "https://github.com/mercadocesar995/analisis_movilidad_2024",
-  },
-  {
-    name: "Experimentos A/B",
-    topic: "Conversión y comportamiento de usuarios",
-    cats: ["Experimentación"],
-    tools: ["Python", "Estadística", "SQL"],
-    bars: [50, 52, 48, 72, 74, 76],
-    code: "07",
-    repo: "https://github.com/mercadocesar995/analisis_landing_page",
-  },
-];
 
 const skills = [
   { group: "Consultar y preparar", items: ["SQL", "Python", "Excel", "Power Query"] },
@@ -150,8 +71,8 @@ function Index() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="#inicio" className="font-display text-lg font-bold">cesar<span className="text-primary">.</span>data</a>
-          <div className="hidden gap-7 text-sm text-muted-foreground md:flex">
-            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["comunicacion", "Comunicación"], ["contacto", "Contacto"]].map(([id, l]) => (
+          <div className="hidden gap-5 text-sm text-muted-foreground md:flex">
+            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["comunicacion", "Comunicación"], ["herramientas", "Herramientas"], ["contacto", "Contacto"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="transition-colors hover:text-foreground">{l}</a>
             ))}
           </div>
@@ -195,22 +116,13 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="self-center rounded-2xl border border-border bg-card p-6 shadow-2xl">
-            <div className="mb-4 flex items-center justify-between font-mono text-xs text-muted-foreground">
-              <span>perfil_cesar.sql</span><span className="text-primary">● live</span>
-            </div>
-            <pre className="mb-6 overflow-x-auto rounded-lg bg-muted p-4 font-mono text-xs leading-relaxed text-muted-foreground">
-<span className="text-accent">SELECT</span> rol, enfoque{"\n"}<span className="text-accent">FROM</span> cesar_mercado{"\n"}<span className="text-accent">WHERE</span> nivel = <span className="text-primary">'junior'</span>;
-            </pre>
-            <div className="grid grid-cols-3 gap-3 text-center">
-              {[[String(projects.length), "proyectos"], ["7", "herramientas"], ["3", "áreas"]].map(([n, l]) => (
-                <div key={l} className="rounded-lg border border-border p-3">
-                  <div className="font-display text-2xl font-bold text-primary">{n}</div>
-                  <div className="text-xs text-muted-foreground">{l}</div>
-                </div>
+          <div className="self-center">
+            <img src={heroImage} alt="Ilustración de tecnología y análisis de datos" className="aspect-[4/3] w-full rounded-lg object-cover" fetchPriority="high" />
+            <div className="mt-5 grid grid-cols-3 divide-x divide-border text-center">
+              {[[String(projects.length), "proyectos"], [String(toolCount), "herramientas"], ["3", "áreas"]].map(([n, label]) => (
+                <div key={label}><div className="font-display text-2xl font-bold text-primary">{n}</div><div className="text-xs text-muted-foreground">{label}</div></div>
               ))}
             </div>
-            <div className="group mt-5"><Bars values={[35, 55, 45, 70, 60, 85, 75, 95]} delay={300} /></div>
           </div>
         </div>
       </section>
@@ -228,10 +140,10 @@ function Index() {
             </div>
             <div className="flex flex-wrap gap-2">
               {(["Todos", "BI", "Clientes", "Experimentación"] as Cat[]).map((c) => (
-                <button key={c} onClick={() => setCat(c)}
+                <Button key={c} variant="outline" aria-pressed={cat === c} onClick={() => setCat(c)}
                   className={`rounded-full border px-4 py-1.5 text-sm transition ${cat === c ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}>
                   {c}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -250,7 +162,7 @@ function Index() {
                   </span>
                 </div>
                 <h3 className="mt-4 font-display text-3xl font-bold md:text-4xl">{featured.name}</h3>
-                <p className="mt-2 max-w-md text-muted-foreground">{featured.topic}</p>
+                <p className="mt-2 max-w-md text-muted-foreground">{featured.summary}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {featured.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
@@ -278,9 +190,9 @@ function Index() {
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cats[0]}</span>
                 </div>
-                <div className="my-6 rounded-lg bg-muted/60 p-4"><Bars values={p.bars} delay={i * 60} /></div>
+                {p.image ? <img src={p.image} alt={`Ilustración temática de ${p.name}`} loading="lazy" className="my-5 aspect-[16/10] w-full rounded-lg object-cover" /> : <div className="my-6 rounded-lg bg-muted/60 p-4"><Bars values={p.bars} delay={i * 60} /></div>}
                 <h3 className="font-display text-xl font-semibold">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.topic}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.tools.map((t) => <span key={t} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs">{t}</span>)}
                 </div>
@@ -301,7 +213,7 @@ function Index() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">Las barras son ilustrativas; cada proyecto enlaza a su repositorio con los datos, el código y el detalle del análisis. Donde aparece "Ver dashboard" puedes abrir el tablero de Power BI.</p>
+          <p className="mt-6 text-xs text-muted-foreground">Imágenes temáticas y gráficos ilustrativos; no son capturas de los dashboards.</p>
         </div>
       </section>
 
@@ -324,13 +236,14 @@ function Index() {
 
       {/* Comunicación + Datos */}
       <CommunicationData />
+      <WorkTools />
 
       {/* Contact */}
-      <section id="contacto" className="mx-auto max-w-6xl px-5 pb-24">
+      <section id="contacto" className="mx-auto max-w-6xl px-5 py-20">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-14">
           <div className="grid-bg absolute inset-0 opacity-60" />
           <div className="relative text-center">
-            <p className="font-mono text-sm text-primary">05 / Contacto</p>
+            <p className="font-mono text-sm text-primary">06 / Contacto</p>
             <h2 className="mt-2 font-display text-3xl font-bold md:text-5xl">¿Hablamos de datos?</h2>
             <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
               Busco mi próxima oportunidad como Analista de Datos Junior. Escríbeme por el canal que prefieras.
