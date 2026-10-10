@@ -143,7 +143,7 @@ function Index() {
                 <Button key={c} variant="outline" aria-pressed={cat === c} onClick={() => setCat(c)}
                   className={`rounded-full border px-4 py-1.5 text-sm transition ${cat === c ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}>
                   {c}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
