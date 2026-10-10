@@ -1,20 +1,19 @@
 import { useState } from "react";
 import {
-  ArrowUpRight,
   Camera,
-  Clapperboard,
+  ChevronDown,
   Film,
   Handshake,
   Layers,
   Lightbulb,
   MessageSquare,
-  Mic,
   Search,
   Users,
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { competencies, dimensions, visualPieces } from "@/lib/communication-competencies";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { competencies, dimensions } from "@/lib/communication-competencies";
 import { cn } from "@/lib/utils";
 
 const competencyIcons: Record<string, LucideIcon> = {
@@ -34,36 +33,8 @@ const dimensionTone = {
   comunicacion: "border-chart-3/30 text-chart-3",
 };
 
-const pieceIcons: Record<string, LucideIcon> = { Foto: Camera, Audio: Mic, Video: Clapperboard };
-
-function Triad() {
-  return (
-    <svg
-      viewBox="0 0 360 230"
-      role="img"
-      aria-label="Datos, negocio y comunicación se solapan: en esa intersección el análisis se vuelve útil"
-      className="mx-auto h-52 w-full max-w-sm"
-    >
-      <circle cx="135" cy="95" r="70" strokeWidth="1.5" className="fill-primary/10 stroke-primary/60" />
-      <circle cx="225" cy="95" r="70" strokeWidth="1.5" className="fill-accent/10 stroke-accent/60" />
-      <circle cx="180" cy="155" r="70" strokeWidth="1.5" className="fill-chart-3/10 stroke-chart-3/60" />
-      <text x="100" y="70" textAnchor="middle" className="fill-primary font-mono text-[11px]">
-        Datos
-      </text>
-      <text x="260" y="70" textAnchor="middle" className="fill-accent font-mono text-[11px]">
-        Negocio
-      </text>
-      <text x="180" y="208" textAnchor="middle" className="fill-chart-3 font-mono text-[11px]">
-        Comunicación
-      </text>
-      <text x="180" y="118" textAnchor="middle" className="fill-foreground/80 font-mono text-[11px]">
-        análisis útil
-      </text>
-    </svg>
-  );
-}
-
 export function CommunicationData() {
+  const [expanded, setExpanded] = useState(false);
   const first = competencies[0];
   const [activeId, setActiveId] = useState(first?.id ?? "");
   const active = competencies.find((item) => item.id === activeId) ?? first;
@@ -71,21 +42,21 @@ export function CommunicationData() {
 
   return (
     <section id="comunicacion" className="scroll-mt-24 border-t border-border">
-      <div className="mx-auto max-w-6xl px-5 py-20">
-        <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-center">
-          <div>
-            <p className="font-mono text-sm text-chart-3">04 / Comunicación + Datos</p>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-4xl">
-              Analizar también es saber a quién le hablas.
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-              Trabajar con datos no es solo manipular números: es formular buenas preguntas, comprender el contexto,
-              identificar qué es relevante y comunicar los hallazgos para que otras personas puedan utilizarlos.
-            </p>
+      <div className="mx-auto max-w-6xl px-5 py-10">
+        <Collapsible open={expanded} onOpenChange={setExpanded}>
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <div>
+              <p className="font-mono text-sm text-chart-3">04 / Comunicación + Datos</p>
+              <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Analizar también es saber comunicar.</h2>
+            </div>
+            <CollapsibleTrigger asChild>
+              <Button variant="outline" className="gap-3">
+                {expanded ? "Cerrar Comunicación + Datos" : "Explorar Comunicación + Datos"}
+                <ChevronDown className={cn("transition-transform", expanded && "rotate-180")} />
+              </Button>
+            </CollapsibleTrigger>
           </div>
-          <Triad />
-        </div>
-
+          <CollapsibleContent className="journey-reveal">
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {dimensions.map((dimension) => (
             <div key={dimension.id} className={cn("rounded-2xl border bg-card p-5", dimensionTone[dimension.id])}>
@@ -164,50 +135,14 @@ export function CommunicationData() {
           </article>
         </div>
 
-        {visualPieces.length > 0 && (
-          <div className="mt-14 border-t border-border pt-10">
-            <p className="font-mono text-xs text-chart-3">EVIDENCIA DE COMUNICACIÓN</p>
-            <h3 className="mt-2 font-display text-2xl font-semibold">También comunico con imagen y cámara</h3>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Piezas propias de fotografía y video. Muestran la parte visual y narrativa de mi formación; no son
-              proyectos de análisis de datos.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {visualPieces.map((piece) => {
-                const Icon = pieceIcons[piece.kind] ?? Camera;
-                return (
-                  <a
-                    key={piece.id}
-                    href={piece.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-chart-3/60"
-                  >
-                    {piece.image && (
-                      <img src={piece.image} alt="" loading="lazy" className="h-44 w-full border-b border-border object-cover" />
-                    )}
-                    <span className="flex flex-1 flex-col p-5">
-                      <span className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                        <Icon className="h-4 w-4 text-chart-3" /> {piece.kind}
-                      </span>
-                      <span className="mt-3 block font-display text-base font-semibold">{piece.title}</span>
-                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{piece.note}</span>
-                      <span className="mt-auto flex pt-4">
-                        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-chart-3" />
-                      </span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
         <p className="mt-12 max-w-3xl border-l-2 border-chart-3/50 pl-5 text-xs leading-relaxed text-muted-foreground">
           La mayoría de estas competencias vienen de mi formación en Comunicación Social y Periodismo (Universidad
           Distrital Francisco José de Caldas) y de proyectos propios. Las mantengo separadas de mi experiencia laboral y
           de los proyectos de análisis publicados en esta página.
         </p>
+          </CollapsibleContent>
+        </Collapsible>
       </div>
     </section>
   );

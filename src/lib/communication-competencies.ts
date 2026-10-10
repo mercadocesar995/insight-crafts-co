@@ -1,7 +1,3 @@
-import bahiaAsset from "@/assets/bahia-pescadores.jpg.asset.json";
-import faunaAsset from "@/assets/fauna-parque.jpg.asset.json";
-import hibiscoAsset from "@/assets/hibisco-detalle.jpg.asset.json";
-
 export type Competency = {
   id: string;
   name: string;
@@ -18,16 +14,6 @@ export type Dimension = {
   label: string;
   role: string;
   text: string;
-};
-
-export type VisualPiece = {
-  id: string;
-  title: string;
-  kind: "Foto" | "Audio" | "Video";
-  note: string;
-  href: string;
-  /** Optional preview: a hosted image URL or an asset pointer URL used as the card thumbnail. */
-  image?: string;
 };
 
 export const dimensions: Dimension[] = [
@@ -155,46 +141,5 @@ export const competencies: Competency[] = [
       "Aporta al cuidado visual de presentaciones y tableros: composición, jerarquía, contraste y uso del espacio para que un dashboard se lea sin esfuerzo.",
     teamValue: "Los materiales que se comparten se ven cuidados y se entienden más rápido.",
     project: "Andes Retail",
-  },
-];
-
-export const visualPieces: VisualPiece[] = [
-  {
-    id: "hegemonia",
-    kind: "Video",
-    title: "HEGEMONIA",
-    note: "Documental propio.",
-    href: "https://drive.google.com/file/d/19swwgoWAgGfL8paal-1NZPBuFKIeUeny/view",
-  },
-  {
-    id: "crecimos-al-sol",
-    kind: "Video",
-    title: "Crecimos al Sol",
-    note: "Pieza audiovisual propia.",
-    href: "https://drive.google.com/file/d/1DvyKbJClfkSDoJkblTw42OKaYcjvBPtT/view",
-  },
-  {
-    id: "fauna-parque",
-    kind: "Foto",
-    title: "Fauna en el parque",
-    note: "Fotografía propia de aves en un parque urbano.",
-    href: faunaAsset.url,
-    image: faunaAsset.url,
-  },
-  {
-    id: "bahia",
-    kind: "Foto",
-    title: "Bahía de pescadores",
-    note: "Fotografía propia de paisaje costero a contraluz.",
-    href: bahiaAsset.url,
-    image: bahiaAsset.url,
-  },
-  {
-    id: "hibisco",
-    kind: "Foto",
-    title: "Hibisco, detalle",
-    note: "Fotografía propia en primer plano.",
-    href: hibiscoAsset.url,
-    image: hibiscoAsset.url,
   },
 ];

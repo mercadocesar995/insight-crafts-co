@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Check, ChevronDown, ChevronLeft, ChevronRight, GraduationCap, MapPin, MessageSquare, Sparkles, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { experiencesForSkill, journey, journeySkills, type JourneySkill, type JourneyStage } from "@/lib/professional-journey";
+import { education } from "@/lib/work-tools";
 import { cn } from "@/lib/utils";
 
 const themeClasses = {
@@ -45,6 +46,10 @@ export function AboutJourney() {
         </div>
 
         {expanded && <div id="about-expanded" className="journey-reveal">
+        <div className="mt-8 flex items-center gap-5 border-t border-border pt-6">
+          <img src={education.logo} alt="Escudo de la Universidad Distrital" loading="lazy" className="h-20 w-20 shrink-0 rounded-md object-contain" />
+          <div><p className="font-mono text-xs text-chart-3">{education.status} · Formación profesional</p><h3 className="mt-2 text-sm font-semibold">{education.institution}</h3><p className="mt-1 text-sm text-muted-foreground">{education.degree}</p></div>
+        </div>
         <div className="mt-10 flex flex-wrap items-center gap-3 border-y border-border py-5 font-display text-sm font-medium md:text-base">
           <span className="inline-flex items-center gap-2 text-primary"><Utensils className="h-4 w-4" /> Operaciones</span>
           <ArrowRight className="h-4 w-4 text-muted-foreground" />

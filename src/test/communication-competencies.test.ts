@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { competencies, dimensions, visualPieces } from "@/lib/communication-competencies";
+import { competencies, dimensions } from "@/lib/communication-competencies";
 
 const PORTFOLIO_PROJECTS = [
   "RappiPlus",
@@ -43,12 +43,4 @@ describe("Comunicación + Datos facts", () => {
     for (const item of competencies) expect(PORTFOLIO_PROJECTS).toContain(item.project);
   });
 
-  it("only publishes visual pieces that are Foto, Audio or Video with an openable link", () => {
-    expect(visualPieces).toHaveLength(5);
-    for (const piece of visualPieces) {
-      expect(["Foto", "Audio", "Video"]).toContain(piece.kind);
-      expect(piece.href.startsWith("https://") || piece.href.startsWith("/")).toBe(true);
-      if (piece.image) expect(piece.image.startsWith("https://") || piece.image.startsWith("/")).toBe(true);
-    }
-  });
 });
