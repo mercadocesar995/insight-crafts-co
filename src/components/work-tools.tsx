@@ -8,7 +8,7 @@ export function WorkTools() {
   return (
     <section id="herramientas" className="scroll-mt-24 border-y border-border bg-card/30">
       <div className="mx-auto max-w-6xl px-5 py-16">
-        <p className="font-mono text-sm text-accent">05 / Herramientas</p>
+        <p className="font-mono text-sm text-accent">02 / Herramientas</p>
         <h2 className="mt-2 font-display text-3xl font-bold">Mi caja de herramientas</h2>
         <div className="mt-10 space-y-9">
           {toolGroups.map((group) => (

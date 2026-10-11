@@ -46,7 +46,7 @@ export function CommunicationData() {
         <Collapsible open={expanded} onOpenChange={setExpanded}>
           <div className="flex flex-wrap items-center justify-between gap-5">
             <div>
-              <p className="font-mono text-sm text-chart-3">04 / Comunicación + Datos</p>
+              <p className="font-mono text-sm text-chart-3">05 / Comunicación + Datos</p>
               <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Analizar también es saber comunicar.</h2>
             </div>
             <CollapsibleTrigger asChild>

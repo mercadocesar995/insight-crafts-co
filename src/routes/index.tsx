@@ -72,7 +72,7 @@ function Index() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="#inicio" className="font-display text-lg font-bold">cesar<span className="text-primary">.</span>data</a>
           <div className="hidden gap-5 text-sm text-muted-foreground md:flex">
-            {[["sobre-mi", "Acerca de mí"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["comunicacion", "Comunicación"], ["herramientas", "Herramientas"], ["contacto", "Contacto"]].map(([id, l]) => (
+            {[["sobre-mi", "Acerca de mí"], ["herramientas", "Herramientas"], ["proyectos", "Proyectos"], ["habilidades", "Habilidades"], ["comunicacion", "Comunicación"], ["contacto", "Contacto"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="transition-colors hover:text-foreground">{l}</a>
             ))}
           </div>
@@ -129,13 +129,14 @@ function Index() {
 
       {/* About */}
       <AboutJourney />
+      <WorkTools />
 
       {/* Projects */}
       <section id="proyectos" className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="font-mono text-sm text-primary">02 / Proyectos</p>
+              <p className="font-mono text-sm text-primary">03 / Proyectos</p>
               <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Casos de análisis y dashboards</h2>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -179,7 +180,9 @@ function Index() {
                   )}
                 </div>
               </div>
-              <div className="mt-6 rounded-xl bg-muted/60 p-5 md:mt-0"><Bars values={featured.bars} delay={120} /></div>
+              <div className="mt-6 md:mt-0">
+                {featured.image ? <img src={featured.image} alt={featured.imageAlt ?? featured.name} loading="lazy" className="aspect-[16/9] w-full rounded-lg object-contain" /> : <Bars values={featured.bars} delay={120} />}
+              </div>
             </div>
           )}
 
@@ -190,7 +193,7 @@ function Index() {
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span>#{p.code}</span><span className="rounded-full bg-muted px-2 py-0.5">{p.cats[0]}</span>
                 </div>
-                {p.image ? <img src={p.image} alt={`Ilustración temática de ${p.name}`} loading="lazy" className="my-5 aspect-[16/10] w-full rounded-lg object-cover" /> : <div className="my-6 rounded-lg bg-muted/60 p-4"><Bars values={p.bars} delay={i * 60} /></div>}
+                {p.image ? <img src={p.image} alt={p.imageAlt ?? `Ilustración temática de ${p.name}`} loading="lazy" className={`my-5 aspect-[16/10] w-full rounded-lg ${p.imageAlt ? "object-contain" : "object-cover"}`} /> : <div className="my-6 rounded-lg bg-muted/60 p-4"><Bars values={p.bars} delay={i * 60} /></div>}
                 <h3 className="font-display text-xl font-semibold">{p.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -213,13 +216,13 @@ function Index() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">Imágenes temáticas y gráficos ilustrativos; no son capturas de los dashboards.</p>
+          <p className="mt-6 text-xs text-muted-foreground">RappiPlus, Andes Capital y Andes Retail muestran capturas reales de sus dashboards; los demás proyectos usan imágenes temáticas.</p>
         </div>
       </section>
 
       {/* Skills */}
       <section id="habilidades" className="mx-auto max-w-6xl px-5 py-20">
-        <p className="font-mono text-sm text-primary">03 / Habilidades</p>
+        <p className="font-mono text-sm text-primary">04 / Habilidades</p>
         <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Mi flujo de trabajo con datos</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {skills.map((s, i) => (
@@ -236,7 +239,6 @@ function Index() {
 
       {/* Comunicación + Datos */}
       <CommunicationData />
-      <WorkTools />
 
       {/* Contact */}
       <section id="contacto" className="mx-auto max-w-6xl px-5 py-20">

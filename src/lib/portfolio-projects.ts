@@ -3,7 +3,9 @@ import connecta from "@/assets/Imagen_ConnectaTel.jpg.asset.json";
 import nova from "@/assets/Imagen_NovaRetail.jpg.asset.json";
 import technology from "@/assets/Imagen_Tecnologia.jpg.asset.json";
 import traffic from "@/assets/Imagen_trafico.jpg.asset.json";
-import retail from "@/assets/Imagen-Walmart.jpg.asset.json";
+import rappiOverview from "@/assets/Overview_RappiPlus.png.asset.json";
+import retailOverview from "@/assets/Overview_AndesRetail.png.asset.json";
+import capitalOverview from "@/assets/Overview_Andes_Capital.png.asset.json";
 
 export type Cat = "Todos" | "BI" | "Clientes" | "Experimentación";
 type Area = Exclude<Cat, "Todos">;
@@ -13,6 +15,7 @@ type Project = {
   topic: string;
   summary: string;
   image?: string;
+  imageAlt?: string;
   cats: Area[];
   tools: string[];
   bars: number[];
@@ -25,6 +28,8 @@ type Project = {
 export const projects: Project[] = [
   {
     name: "RappiPlus",
+    image: rappiOverview.url,
+    imageAlt: "Captura del overview ejecutivo de RappiPlus",
     summary: "Análisis de ventas, rentabilidad y pruebas A/B para conectar el desempeño del negocio con el comportamiento de los clientes.",
     topic: "Ventas, rentabilidad y A/B Testing",
     cats: ["BI", "Clientes", "Experimentación"],
@@ -37,6 +42,8 @@ export const projects: Project[] = [
   },
   {
     name: "Andes Capital Real Estate",
+    image: capitalOverview.url,
+    imageAlt: "Captura del overview de desempeño comercial de Andes Capital Real Estate",
     summary: "Análisis de ventas y clientes del sector inmobiliario, con cohortes y un tablero para explorar el desempeño comercial.",
     topic: "Ventas, clientes y cohortes",
     cats: ["BI", "Clientes"],
@@ -49,7 +56,8 @@ export const projects: Project[] = [
   {
     name: "Andes Retail",
     summary: "Tablero de evolución comercial y rentabilidad de 2024–2025, con una vista general y detalle operativo.",
-    image: retail.url,
+    image: retailOverview.url,
+    imageAlt: "Captura del overview comercial de Andes Retail 2024–2025",
     topic: "Detalle operativo y rentabilidad (2024–2025)",
     cats: ["BI"],
     tools: ["Power BI", "DAX", "Excel"],
