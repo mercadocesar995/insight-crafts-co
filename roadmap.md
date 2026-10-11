@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Reemplazar las portadas de RappiPlus, Andes Retail y Andes Capital por las capturas Overview recibidas y verificar que se vean completas.
+- [ ] Mover Herramientas antes de Proyectos, conservando su diseño y ajustando el orden de navegación.
+
 - [x] Añadir Acerca de mí con ruta profesional, fichas y exploración de habilidades; verificar escritorio y móvil.
 - [x] Botón "Ver dashboard" (Power BI) en RappiPlus, Andes Capital y Andes Retail — enlaces publicados, abren sin inicio de sesión
 - [ ] Enlace de Power BI para NovaRetail+ (aún no tiene tablero propio publicado)
