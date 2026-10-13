@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcercaDeMiRouteImport } from './routes/acerca-de-mi'
+import { Route as ComunicacionRouteImport } from './routes/comunicacion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcercaDeMiRoute = AcercaDeMiRouteImport.update({
+  id: '/acerca-de-mi',
+  path: '/acerca-de-mi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComunicacionRoute = ComunicacionRouteImport.update({
+  id: '/comunicacion',
+  path: '/comunicacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acerca-de-mi': typeof AcercaDeMiRoute
+  '/comunicacion': typeof ComunicacionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acerca-de-mi': typeof AcercaDeMiRoute
+  '/comunicacion': typeof ComunicacionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/acerca-de-mi': typeof AcercaDeMiRoute
+  '/comunicacion': typeof ComunicacionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/acerca-de-mi' | '/comunicacion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/acerca-de-mi' | '/comunicacion'
+  id: '__root__' | '/' | '/acerca-de-mi' | '/comunicacion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcercaDeMiRoute: typeof AcercaDeMiRoute
+  ComunicacionRoute: typeof ComunicacionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/acerca-de-mi': {
+      id: '/acerca-de-mi'
+      path: '/acerca-de-mi'
+      fullPath: '/acerca-de-mi'
+      preLoaderRoute: typeof AcercaDeMiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comunicacion': {
+      id: '/comunicacion'
+      path: '/comunicacion'
+      fullPath: '/comunicacion'
+      preLoaderRoute: typeof ComunicacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcercaDeMiRoute: AcercaDeMiRoute,
+  ComunicacionRoute: ComunicacionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

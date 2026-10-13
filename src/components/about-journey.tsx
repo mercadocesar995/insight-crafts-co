@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Check, ChevronDown, ChevronLeft, ChevronRight, GraduationCap, MapPin, MessageSquare, Sparkles, Utensils } from "lucide-react";
+import { ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Check, ChevronLeft, ChevronRight, GraduationCap, MapPin, MessageSquare, Sparkles, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { experiencesForSkill, journey, journeySkills, type JourneySkill, type JourneyStage } from "@/lib/professional-journey";
 import { education } from "@/lib/work-tools";
@@ -14,7 +14,6 @@ const themeClasses = {
 const themeIcons = { operations: Utensils, business: BriefcaseBusiness, communication: MessageSquare, data: BarChart3 };
 
 export function AboutJourney() {
-  const [expanded, setExpanded] = useState(false);
   const [selectedId, setSelectedId] = useState("cuarta");
   const [skill, setSkill] = useState<JourneySkill>("Pensamiento analítico");
   const selectedIndex = journey.findIndex((stage) => stage.id === selectedId);
@@ -38,14 +37,11 @@ export function AboutJourney() {
             <p className="font-mono text-sm text-primary">01 / Acerca de mí</p>
             <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Datos, negocio y una mirada comunicadora.</h2>
           </div>
-          <div><p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Mi formación en Comunicación Social y mi experiencia operativa aportan contexto y claridad a mi perfil de Analista de Datos Junior.</p>
-            <Button variant="outline" aria-expanded={expanded} aria-controls="about-expanded" onClick={() => setExpanded((value) => !value)} className="mt-4 gap-2">
-              {expanded ? "Cerrar acerca de mí" : "Acerca de mí"}<ChevronDown className={cn("h-4 w-4 transition-transform", expanded && "rotate-180")} />
-            </Button>
+          <div><p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Mi formación en Comunicación Social y mi experiencia operativa aportan contexto y claridad a mi perfil como Analista de Datos.</p>
           </div>
         </div>
 
-        {expanded && <div id="about-expanded" className="journey-reveal">
+        <div id="about-expanded" className="journey-reveal">
         <div className="mt-8 flex items-center gap-5 border-t border-border pt-6">
           <img src={education.logo} alt="Escudo de la Universidad Distrital" loading="lazy" className="h-20 w-20 shrink-0 rounded-md object-contain" />
           <div><p className="font-mono text-xs text-chart-3">{education.status} · Formación profesional</p><h3 className="mt-2 text-sm font-semibold">{education.institution}</h3><p className="mt-1 text-sm text-muted-foreground">{education.degree}</p></div>
@@ -143,10 +139,10 @@ export function AboutJourney() {
         <div className="mt-12 border-l-2 border-primary pl-6">
           <p className="font-mono text-xs text-primary">MI PRESENTE Y LO QUE SIGUE</p>
           <p className="mt-3 max-w-3xl font-display text-xl font-medium leading-relaxed">Combino pensamiento analítico, comprensión operativa del negocio y habilidades de comunicación para transformar información en hallazgos claros y útiles para la toma de decisiones.</p>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">Sigo desarrollándome como Analista de Datos Junior, con interés en aprender y aportar a equipos que conecten información con decisiones.</p>
-          <Button asChild variant="link" className="mt-4 h-auto p-0"><a href="#proyectos">Mi siguiente capítulo: los proyectos<ArrowRight /></a></Button>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">Como Analista de Datos, me interesa seguir aprendiendo y aportar a equipos que conecten información con decisiones.</p>
+          <Button asChild variant="link" className="mt-4 h-auto p-0"><a href="/#proyectos">Mi siguiente capítulo: los proyectos<ArrowRight /></a></Button>
         </div>
-        </div>}
+        </div>
       </div>
     </section>
   );

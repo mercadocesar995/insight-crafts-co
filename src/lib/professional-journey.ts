@@ -137,9 +137,9 @@ export const journey: JourneyStage[] = [
     },
   },
   {
-    id: "data", company: "Mi presente en análisis de datos", role: "Analista de Datos Junior · perfil en desarrollo", period: "Actualidad · formación y portafolio", kind: "Formación y proyectos", theme: "data",
+    id: "data", company: "Mi presente en análisis de datos", role: "Analista de Datos", period: "Actualidad · formación y portafolio", kind: "Formación y proyectos", theme: "data",
     headline: "Integrar lo aprendido, no empezar de cero",
-    context: "Desarrollo mi perfil junior mediante formación práctica y proyectos de portafolio como RappiPlus, Andes Retail Group, Andes Capital Real Estate, ConnectaTel y NovaRetail+. Esta etapa no representa experiencia laboral formal como analista.",
+    context: "Desarrollo mi perfil mediante formación práctica y proyectos de portafolio como RappiPlus, Andes Retail Group, Andes Capital Real Estate, ConnectaTel y NovaRetail+. Esta etapa no representa experiencia laboral formal como analista.",
     learning: "Me formo en limpieza, transformación y validación de datos, análisis exploratorio, estadística, pruebas A/B y creación de KPIs, visualizaciones y dashboards.",
     connection: "Aplico nuevas herramientas a preguntas sobre ventas, clientes, rentabilidad y comportamiento de usuarios, integrando mi comprensión operativa del negocio.",
     contribution: "Pensamiento analítico, contexto de negocio y comunicación clara, con disposición para aprender y aportar a un equipo de datos, BI, marketing u operaciones.",

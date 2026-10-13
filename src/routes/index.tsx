@@ -1,12 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { AboutJourney } from "@/components/about-journey";
-import { CommunicationData } from "@/components/communication-data";
 import { WorkTools } from "@/components/work-tools";
 import { projects, heroImage, type Cat } from "@/lib/portfolio-projects";
 import { toolCount } from "@/lib/work-tools";
 import { Button } from "@/components/ui/button";
 import {
+  ArrowRight,
   ArrowUpRight,
   BarChart3,
   Github,
@@ -19,10 +18,10 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cesar Mercado — Analista de Datos Junior" },
-      { name: "description", content: "Portafolio de Cesar Mercado, Analista de Datos Junior con formación en Comunicación Social. Transformo datos en hallazgos claros que facilitan la toma de decisiones. SQL, Python, Excel y Power BI." },
-      { property: "og:title", content: "Cesar Mercado — Analista de Datos Junior" },
-      { property: "og:description", content: "Analista de Datos Junior con formación en Comunicación Social y experiencia en contextos de negocio. Datos + negocio + comunicación." },
+      { title: "Cesar Mercado — Analista de Datos y Comunicador Social" },
+      { name: "description", content: "Portafolio de Cesar Mercado, Comunicador Social con formación en Análisis de Datos en TripleTen. Transformo datos en hallazgos claros que facilitan la toma de decisiones. SQL, Python, Excel y Power BI." },
+      { property: "og:title", content: "Cesar Mercado — Analista de Datos y Comunicador Social" },
+      { property: "og:description", content: "Comunicador Social y Analista de Datos: SQL, Python y Power BI para traducir análisis en historias claras. Datos + negocio + comunicación." },
 
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -94,16 +93,16 @@ function Index() {
         <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-[1.3fr_1fr] md:py-28">
           <div>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Abierto a oportunidades · Analista de Datos Junior
+              <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Abierto a oportunidades · Analista de Datos
             </p>
             <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
               Cesar Mercado
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Analista de Datos Junior con formación en Comunicación Social y experiencia en contextos de
-              negocio. Transformo datos en hallazgos claros que facilitan la comprensión y la toma de decisiones.
-            </p>
-
+            <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground">
+              <p className="text-lg text-foreground">Hola, soy Cesar Mercado. Creo firmemente que los mejores analistas de datos no son solo los que dominan las herramientas, sino los que saben qué preguntas hacerle a la información.</p>
+              <p>Soy Comunicador Social con formación especializada en Análisis de Datos en TripleTen. A lo largo de mi trayectoria, he combinado la gestión de datos operativos y de talento —como en Apex America, donde consolidé información de más de 1.500 colaboradores y elaboré reportes de gestión— con proyectos técnicos sólidos donde he utilizado SQL, Python y Power BI para construir dashboards de negocio y evaluar KPIs.</p>
+              <p>Lo que me diferencia es mi capacidad para traducir análisis complejos en historias claras que facilitan la toma de decisiones operativas y estratégicas. Me entusiasma mucho aportar esta visión analítica y orientada a resultados a su equipo.</p>
+            </div>
             <div className="mt-8 flex flex-wrap items-center gap-3 font-display text-xl font-semibold">
               <span className="rounded-lg bg-primary/15 px-3 py-1 text-primary">Datos</span>+
               <span className="rounded-lg bg-accent/15 px-3 py-1 text-accent">Negocio</span>+
@@ -128,7 +127,15 @@ function Index() {
       </section>
 
       {/* About */}
-      <AboutJourney />
+      <section id="sobre-mi" className="scroll-mt-24 border-t border-border">
+        <div className="mx-auto max-w-6xl px-5 py-14">
+          <div className="grid gap-6 rounded-2xl border border-border bg-card p-8 md:grid-cols-[1fr_1.2fr] md:items-center md:p-10">
+            <div><p className="font-mono text-sm text-primary">01 / Acerca de mí</p><h2 className="mt-3 font-display text-2xl font-bold leading-tight md:text-3xl">Datos, negocio y una mirada comunicadora.</h2></div>
+            <div><p className="text-sm leading-relaxed text-muted-foreground md:text-base">Mi formación en Comunicación Social y mi experiencia en operaciones, ventas y desarrollo organizacional aportan contexto a cada análisis. Conoce las etapas que me trajeron a los datos.</p>
+              <Button asChild className="mt-5 gap-2 rounded-full"><Link to="/acerca-de-mi">Ver trayectoria<ArrowRight className="h-4 w-4" /></Link></Button></div>
+          </div>
+        </div>
+      </section>
       <WorkTools />
 
       {/* Projects */}
@@ -238,7 +245,15 @@ function Index() {
       </section>
 
       {/* Comunicación + Datos */}
-      <CommunicationData />
+      <section id="comunicacion" className="scroll-mt-24 border-t border-border">
+        <div className="mx-auto max-w-6xl px-5 py-14">
+          <div className="grid gap-6 rounded-2xl border border-border bg-card p-8 md:grid-cols-[1fr_1.2fr] md:items-center md:p-10">
+            <div><p className="font-mono text-sm text-chart-3">05 / Comunicación + Datos</p><h2 className="mt-3 font-display text-2xl font-bold leading-tight md:text-3xl">Analizar también es saber comunicar.</h2></div>
+            <div><p className="text-sm leading-relaxed text-muted-foreground md:text-base">Ocho competencias de Comunicación Social y Periodismo —síntesis, narrativa, pensamiento crítico y más— que aplico para convertir hallazgos en decisiones.</p>
+              <Button asChild className="mt-5 gap-2 rounded-full"><Link to="/comunicacion">Leer detalle<ArrowRight className="h-4 w-4" /></Link></Button></div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact */}
       <section id="contacto" className="mx-auto max-w-6xl px-5 py-20">
@@ -248,7 +263,7 @@ function Index() {
             <p className="font-mono text-sm text-primary">06 / Contacto</p>
             <h2 className="mt-2 font-display text-3xl font-bold md:text-5xl">¿Hablamos de datos?</h2>
             <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-              Busco mi próxima oportunidad como Analista de Datos Junior. Escríbeme por el canal que prefieras.
+              Busco mi próxima oportunidad como Analista de Datos. Escríbeme por el canal que prefieras.
             </p>
 
             <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
@@ -281,7 +296,7 @@ function Index() {
 
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 text-sm text-muted-foreground">
-          <span>© 2026 Cesar Mercado · Analista de Datos Junior</span>
+          <span>© 2026 Cesar Mercado · Analista de Datos</span>
           <div className="flex items-center gap-1">
             <a href={NOTION} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1 transition hover:text-foreground">Portafolio en Notion</a>
             <a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="rounded-full p-2 transition hover:text-foreground"><Github className="h-4 w-4" /></a>
