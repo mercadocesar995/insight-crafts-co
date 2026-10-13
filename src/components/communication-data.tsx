@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Camera,
-  ChevronDown,
   Film,
   Handshake,
   Layers,
@@ -12,7 +11,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { competencies, dimensions } from "@/lib/communication-competencies";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +32,6 @@ const dimensionTone = {
 };
 
 export function CommunicationData() {
-  const [expanded, setExpanded] = useState(false);
   const first = competencies[0];
   const [activeId, setActiveId] = useState(first?.id ?? "");
   const active = competencies.find((item) => item.id === activeId) ?? first;
@@ -43,20 +40,14 @@ export function CommunicationData() {
   return (
     <section id="comunicacion" className="scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 py-10">
-        <Collapsible open={expanded} onOpenChange={setExpanded}>
+        <div>
           <div className="flex flex-wrap items-center justify-between gap-5">
             <div>
               <p className="font-mono text-sm text-chart-3">05 / Comunicación + Datos</p>
               <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Analizar también es saber comunicar.</h2>
             </div>
-            <CollapsibleTrigger asChild>
-              <Button variant="outline" className="gap-3">
-                {expanded ? "Cerrar Comunicación + Datos" : "Explorar Comunicación + Datos"}
-                <ChevronDown className={cn("transition-transform", expanded && "rotate-180")} />
-              </Button>
-            </CollapsibleTrigger>
           </div>
-          <CollapsibleContent className="journey-reveal">
+          <div className="journey-reveal">
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {dimensions.map((dimension) => (
             <div key={dimension.id} className={cn("rounded-2xl border bg-card p-5", dimensionTone[dimension.id])}>
@@ -141,8 +132,8 @@ export function CommunicationData() {
           Distrital Francisco José de Caldas) y de proyectos propios. Las mantengo separadas de mi experiencia laboral y
           de los proyectos de análisis publicados en esta página.
         </p>
-          </CollapsibleContent>
-        </Collapsible>
+          </div>
+        </div>
       </div>
     </section>
   );
