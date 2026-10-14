@@ -14,7 +14,7 @@ const themeClasses = {
 const themeIcons = { operations: Utensils, business: BriefcaseBusiness, communication: MessageSquare, data: BarChart3 };
 
 export function AboutJourney() {
-  const [selectedId, setSelectedId] = useState("cuarta");
+  const [selectedId, setSelectedId] = useState("apex");
   const [skill, setSkill] = useState<JourneySkill>("Pensamiento analítico");
   const selectedIndex = journey.findIndex((stage) => stage.id === selectedId);
   const selected = journey[selectedIndex];
@@ -37,7 +37,7 @@ export function AboutJourney() {
             <p className="font-mono text-sm text-primary">01 / Acerca de mí</p>
             <h2 className="mt-3 font-display text-2xl font-bold leading-tight">Datos, negocio y una mirada comunicadora.</h2>
           </div>
-          <div><p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Mi formación en Comunicación Social y mi experiencia operativa aportan contexto y claridad a mi perfil como Analista de Datos.</p>
+          <div><p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Mi formación en Comunicación Social y mi experiencia operativa aportan contexto y claridad a mi perfil como Analista de Datos. En Apex America, como Analista de Desarrollo Organizacional, gestioné la información de unas 1.500 personas y sus indicadores, uniendo la gestión del talento con los datos.</p>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export function AboutJourney() {
 
         <div className="mt-10 flex items-end justify-between gap-4">
           <div><p className="font-mono text-xs text-muted-foreground">2016 → ACTUALIDAD</p><h3 className="mt-2 font-display text-xl font-semibold">Mi ruta profesional</h3></div>
-          <span className="font-mono text-xs text-muted-foreground">7 experiencias · 2 capítulos de formación</span>
+          <span className="font-mono text-xs text-muted-foreground">{journey.filter((stage) => stage.kind === "Experiencia laboral").length} experiencias · {journey.filter((stage) => stage.kind !== "Experiencia laboral").length} capítulos de formación</span>
         </div>
 
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[0.85fr_1.45fr]">
@@ -67,8 +67,8 @@ export function AboutJourney() {
               const StageIcon = themeIcons[stage.theme];
               const active = selected.id === stage.id;
               return (
-                <li key={stage.id} className={cn("relative", index === 7 && "mt-5 border-t border-border pt-5")}>
-                  {index < 6 && <span aria-hidden="true" className="absolute bottom-0 left-[23px] top-12 w-px bg-border" />}
+                <li key={stage.id} className={cn("relative", journey[index - 1]?.kind !== stage.kind && index > 0 && "mt-5 border-t border-border pt-5")}>
+                  {index < journey.length - 1 && <span aria-hidden="true" className="absolute bottom-0 left-[23px] top-12 w-px bg-border" />}
                   <Button variant="ghost" aria-pressed={active} aria-controls="journey-detail" onClick={() => selectStage(stage)}
                     className={cn("h-auto w-full justify-start gap-4 whitespace-normal rounded-lg px-2 py-3 text-left hover:bg-secondary hover:text-foreground", active && "bg-secondary")}>
                     <span className={cn("relative grid h-8 w-8 shrink-0 place-items-center rounded-full border", active ? themeClasses[stage.theme] : "border-border bg-background text-muted-foreground")}><StageIcon className="h-4 w-4" /></span>
@@ -85,7 +85,7 @@ export function AboutJourney() {
               <div className="border-b border-border p-6 md:p-8">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <span className={cn("inline-flex items-center gap-2 rounded-md border px-2.5 py-1 font-mono text-xs", themeClasses[selected.theme])}><Icon className="h-3.5 w-3.5" /> {selected.kind}</span>
-                  <span className="font-mono text-xs text-muted-foreground">{String(selectedIndex + 1).padStart(2, "0")} / 09</span>
+                  <span className="font-mono text-xs text-muted-foreground">{String(selectedIndex + 1).padStart(2, "0")} / {String(journey.length).padStart(2, "0")}</span>
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-bold leading-tight md:text-3xl">{selected.headline}</h3>
                 <p className="mt-3 font-medium">{selected.company}</p>
