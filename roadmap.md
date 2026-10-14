@@ -12,4 +12,5 @@
 - [x] Añadir las diez herramientas, agrupadas por análisis y multimedia.
 - [x] Incorporar imágenes temáticas y resúmenes breves de proyectos.
 - [x] Destacar la formación en la Universidad Distrital dentro de Acerca de mí.
+- [x] Añadir y destacar la experiencia en Apex America (Analista de Desarrollo Organizacional, sep 2025 – mar 2026) en la ruta profesional.
 - [x] Verificar los cambios y los enlaces existentes.
