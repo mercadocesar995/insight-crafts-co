@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Cesar Mercado — Analista de Datos y Comunicador Social" },
-      { name: "description", content: "Portafolio de Cesar Mercado, Comunicador Social con formación en Análisis de Datos en TripleTen. Transformo datos en hallazgos claros que facilitan la toma de decisiones. SQL, Python, Excel y Power BI." },
+      { name: "description", content: "Portafolio de Cesar Mercado, Analista de Datos con formación en Comunicación Social. Transformo datos en hallazgos claros que facilitan la toma de decisiones. SQL, Python, Excel y Power BI." },
       { property: "og:title", content: "Cesar Mercado — Analista de Datos y Comunicador Social" },
       { property: "og:description", content: "Comunicador Social y Analista de Datos: SQL, Python y Power BI para traducir análisis en historias claras. Datos + negocio + comunicación." },
 
@@ -99,9 +99,7 @@ function Index() {
               Cesar Mercado
             </h1>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p className="text-lg text-foreground">Hola, soy Cesar Mercado. Creo firmemente que los mejores analistas de datos no son solo los que dominan las herramientas, sino los que saben qué preguntas hacerle a la información.</p>
-              <p>Soy Comunicador Social con formación especializada en Análisis de Datos en TripleTen. A lo largo de mi trayectoria, he combinado la gestión de datos operativos y de talento —como en Apex America, donde consolidé información de más de 1.500 colaboradores y elaboré reportes de gestión— con proyectos técnicos sólidos donde he utilizado SQL, Python y Power BI para construir dashboards de negocio y evaluar KPIs.</p>
-              <p>Lo que me diferencia es mi capacidad para traducir análisis complejos en historias claras que facilitan la toma de decisiones operativas y estratégicas. Me entusiasma mucho aportar esta visión analítica y orientada a resultados a su equipo.</p>
+              <p className="text-lg text-foreground">Analista de Datos con formación en Comunicación Social y experiencia en contextos de negocio. Transformo datos en hallazgos claros que facilitan la comprensión y la toma de decisiones.</p>
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-3 font-display text-xl font-semibold">
               <span className="rounded-lg bg-primary/15 px-3 py-1 text-primary">Datos</span>+
