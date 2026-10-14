@@ -123,6 +123,20 @@ export const journey: JourneyStage[] = [
     result: { value: 20, text: "Reducción de mermas", attribution: "Resultado reportado: los controles de inventario que implementé contribuyeron a reducir las mermas en un 20%, sin atribuir ahorros monetarios no documentados." },
   },
   {
+    id: "apex", company: "Apex America", role: "Analista de Desarrollo Organizacional", period: "sep 2025 – mar 2026", kind: "Experiencia laboral", theme: "data",
+    headline: "Organizar la información del talento humano",
+    context: "Gestioné y organicé información de aproximadamente 1.500 colaboradores para apoyar los procesos de desarrollo organizacional. Realicé seguimiento a la información de los colaboradores para apoyar el control y la evaluación de los procesos internos.",
+    learning: "Elaboré y actualicé reportes de indicadores de onboarding, capacitación y desarrollo del personal, conectando los registros de personas con la evaluación de los procesos.",
+    connection: "Los reportes de indicadores y las encuestas de satisfacción me mostraron cómo la información del talento se convierte en decisiones sobre onboarding, capacitación y desarrollo.",
+    contribution: "Aportar orden, consistencia y contexto de negocio a los datos de personas, y traducirlos en reportes útiles para el área.",
+    skills: {
+      "Organización y atención al detalle": "Gestión y organización de la información de aproximadamente 1.500 colaboradores.",
+      "Pensamiento analítico": "Elaboración y actualización de reportes de indicadores de onboarding, capacitación y desarrollo del personal.",
+      "Pensamiento crítico": "Seguimiento a la información de los colaboradores para el control y la evaluación de los procesos internos.",
+      "Orientación a resultados": "Apoyo a la revisión del onboarding y al seguimiento de la satisfacción de nuevos colaboradores mediante encuestas y reportes.",
+    },
+  },
+  {
     id: "communication", company: "Universidad Distrital Francisco José de Caldas", role: "Comunicación Social y Periodismo", period: "Formación profesional · sin fecha especificada", kind: "Formación", theme: "communication",
     headline: "La comunicación también es mi identidad",
     context: "Soy Comunicador Social y Periodista, con un doble enfoque en comunicación organizacional y producción audiovisual. He liderado y participado en proyectos audiovisuales presentados en foros nacionales y festivales universitarios.",
