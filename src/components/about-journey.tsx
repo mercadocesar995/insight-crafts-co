@@ -67,7 +67,7 @@ export function AboutJourney() {
               const StageIcon = themeIcons[stage.theme];
               const active = selected.id === stage.id;
               return (
-                <li key={stage.id} className={cn("relative", index > 0 && journey[index - 1].kind !== stage.kind && "mt-5 border-t border-border pt-5")}>
+                <li key={stage.id} className={cn("relative", journey[index - 1]?.kind !== stage.kind && index > 0 && "mt-5 border-t border-border pt-5")}>
                   {index < journey.length - 1 && <span aria-hidden="true" className="absolute bottom-0 left-[23px] top-12 w-px bg-border" />}
                   <Button variant="ghost" aria-pressed={active} aria-controls="journey-detail" onClick={() => selectStage(stage)}
                     className={cn("h-auto w-full justify-start gap-4 whitespace-normal rounded-lg px-2 py-3 text-left hover:bg-secondary hover:text-foreground", active && "bg-secondary")}>
